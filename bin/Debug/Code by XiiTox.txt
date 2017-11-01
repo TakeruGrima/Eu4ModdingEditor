@@ -1,0 +1,9 @@
+Code à rajouter :
+
+using DevComponents.DotNetBar.Metro;
+
+
+namespace TonProjet
+  {
+    public partial class Form1 : MetroForm
+  {

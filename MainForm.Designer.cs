@@ -42,14 +42,17 @@
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ouvrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.nouveauToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enregistrerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PrincipalSplit = new System.Windows.Forms.SplitContainer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.SolutionView = new Eu4ModEditor.EditorComponent.SolutionTreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SolutionHeaderPanel = new System.Windows.Forms.Panel();
             this.SolutionLabel = new System.Windows.Forms.Label();
+            this.SplitRight = new System.Windows.Forms.SplitContainer();
             this.TextTab = new Eu4ModEditor.ControlComponent.VisualStudioTabControl();
-            this.enregistrerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.propertyBox1 = new Eu4ModEditor.PropertyPanel.PropertyBox();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.TopPanel.SuspendLayout();
             this.menuStripZ1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PrincipalSplit)).BeginInit();
@@ -58,6 +61,10 @@
             this.PrincipalSplit.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SolutionHeaderPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SplitRight)).BeginInit();
+            this.SplitRight.Panel1.SuspendLayout();
+            this.SplitRight.Panel2.SuspendLayout();
+            this.SplitRight.SuspendLayout();
             this.SuspendLayout();
             // 
             // styleManager1
@@ -196,7 +203,7 @@
             this.ouvrirToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control;
             this.ouvrirToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.ouvrirToolStripMenuItem.Name = "ouvrirToolStripMenuItem";
-            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ouvrirToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.ouvrirToolStripMenuItem.Text = "Ouvrir";
             this.ouvrirToolStripMenuItem.Click += new System.EventHandler(this.ouvrirToolStripMenuItem_Click);
             // 
@@ -204,9 +211,17 @@
             // 
             this.nouveauToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.nouveauToolStripMenuItem.Name = "nouveauToolStripMenuItem";
-            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nouveauToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.nouveauToolStripMenuItem.Text = "Nouveau";
             this.nouveauToolStripMenuItem.Click += new System.EventHandler(this.nouveauToolStripMenuItem_Click);
+            // 
+            // enregistrerToolStripMenuItem
+            // 
+            this.enregistrerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
+            this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
+            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.enregistrerToolStripMenuItem.Text = "Enregistrer";
+            this.enregistrerToolStripMenuItem.Click += new System.EventHandler(this.enregistrerToolStripMenuItem_Click);
             // 
             // PrincipalSplit
             // 
@@ -220,7 +235,7 @@
             // 
             // PrincipalSplit.Panel2
             // 
-            this.PrincipalSplit.Panel2.Controls.Add(this.TextTab);
+            this.PrincipalSplit.Panel2.Controls.Add(this.SplitRight);
             this.PrincipalSplit.Size = new System.Drawing.Size(1094, 537);
             this.PrincipalSplit.SplitterDistance = 350;
             this.PrincipalSplit.TabIndex = 3;
@@ -280,6 +295,24 @@
             this.SolutionLabel.TabIndex = 1;
             this.SolutionLabel.Text = "Explorateur de solution";
             // 
+            // SplitRight
+            // 
+            this.SplitRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SplitRight.Location = new System.Drawing.Point(0, 0);
+            this.SplitRight.Name = "SplitRight";
+            // 
+            // SplitRight.Panel1
+            // 
+            this.SplitRight.Panel1.Controls.Add(this.TextTab);
+            // 
+            // SplitRight.Panel2
+            // 
+            this.SplitRight.Panel2.Controls.Add(this.propertyBox1);
+            this.SplitRight.Panel2.Controls.Add(this.vScrollBar1);
+            this.SplitRight.Size = new System.Drawing.Size(740, 537);
+            this.SplitRight.SplitterDistance = 470;
+            this.SplitRight.TabIndex = 1;
+            // 
             // TextTab
             // 
             this.TextTab.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
@@ -288,27 +321,36 @@
             this.TextTab.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.TextTab.ClosingButtonColor = System.Drawing.Color.WhiteSmoke;
             this.TextTab.ClosingMessage = null;
-            this.TextTab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TextTab.HeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
             this.TextTab.HorizontalLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.TextTab.ItemSize = new System.Drawing.Size(240, 16);
-            this.TextTab.Location = new System.Drawing.Point(0, 0);
+            this.TextTab.Location = new System.Drawing.Point(3, 3);
             this.TextTab.Name = "TextTab";
             this.TextTab.SelectedIndex = 0;
             this.TextTab.SelectedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.TextTab.ShowClosingButton = true;
             this.TextTab.ShowClosingMessage = false;
-            this.TextTab.Size = new System.Drawing.Size(740, 537);
+            this.TextTab.Size = new System.Drawing.Size(531, 537);
             this.TextTab.TabIndex = 0;
             this.TextTab.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             // 
-            // enregistrerToolStripMenuItem
+            // propertyBox1
             // 
-            this.enregistrerToolStripMenuItem.ForeColor = System.Drawing.Color.White;
-            this.enregistrerToolStripMenuItem.Name = "enregistrerToolStripMenuItem";
-            this.enregistrerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.enregistrerToolStripMenuItem.Text = "Enregistrer";
-            this.enregistrerToolStripMenuItem.Click += new System.EventHandler(this.enregistrerToolStripMenuItem_Click);
+            this.propertyBox1.ForeColor = System.Drawing.SystemColors.Control;
+            this.propertyBox1.Location = new System.Drawing.Point(3, 0);
+            this.propertyBox1.Name = "propertyBox1";
+            this.propertyBox1.Size = new System.Drawing.Size(243, 110);
+            this.propertyBox1.TabIndex = 1;
+            this.propertyBox1.TabStop = false;
+            this.propertyBox1.Text = "propertyBox1";
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.vScrollBar1.Location = new System.Drawing.Point(249, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 537);
+            this.vScrollBar1.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -336,6 +378,10 @@
             this.panel3.ResumeLayout(false);
             this.SolutionHeaderPanel.ResumeLayout(false);
             this.SolutionHeaderPanel.PerformLayout();
+            this.SplitRight.Panel1.ResumeLayout(false);
+            this.SplitRight.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SplitRight)).EndInit();
+            this.SplitRight.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,6 +409,9 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolStripMenuItem nouveauToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enregistrerToolStripMenuItem;
+        private System.Windows.Forms.SplitContainer SplitRight;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private PropertyPanel.PropertyBox propertyBox1;
     }
 }
 

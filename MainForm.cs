@@ -25,6 +25,8 @@ namespace Eu4ModEditor
         private Point dragCursorPoint;
         private Point dragFormPoint;
 
+        GroupBox box;
+
         public MainForm()
         {
             InitializeComponent();
@@ -144,6 +146,9 @@ namespace Eu4ModEditor
                             TextTab.TabPages.Add(tp);
 
                             tp.Show();
+
+                            propertyBox1.AddField("Tag");
+                            propertyBox1.AddColorField("Color");
                         }
                     }
                 }
@@ -217,36 +222,5 @@ namespace Eu4ModEditor
                 c.Save();
             }
         }
-
-        /*private void SolutionView_DrawNode(object sender, DrawTreeNodeEventArgs e)
-        {
-            if (e.Bounds.Height == 0)
-                return;
-
-            e.Graphics.FillRectangle(new SolidBrush((e.Node.Parent?.Index ?? e.Node.Index) % 2 == 0 ? Color.Blue : Color.Aqua), e.Bounds);
-
-            if (e.Node.Nodes.Count > 0)
-            {
-                if (!e.Node.IsExpanded)
-                    e.Graphics.FillPolygon(Brushes.Red,
-                        new[]
-                        {
-                        new PointF(e.Bounds.X + e.Bounds.Height / 10, e.Bounds.Y + e.Bounds.Height / 10),
-                        new PointF(e.Bounds.X + e.Bounds.Height / 10, e.Bounds.Y + e.Bounds.Height * 0.9f),
-                        new PointF(e.Bounds.X + e.Bounds.Height, e.Bounds.Y + e.Bounds.Height / 2)
-                        });
-                else
-                    e.Graphics.FillPolygon(Brushes.Red,
-                        new[]
-                        {
-                        new PointF(e.Bounds.X + e.Bounds.Height / 10, e.Bounds.Y + e.Bounds.Height / 10),
-                        new PointF(e.Bounds.X + e.Bounds.Height, e.Bounds.Y + e.Bounds.Height / 10),
-                        new PointF(e.Bounds.X + e.Bounds.Height / 2, e.Bounds.Y + e.Bounds.Height)
-                        });
-            }
-            e.Graphics.DrawString(e.Node.Text, new Font(FontFamily.GenericMonospace, e.Bounds.Height * 0.7f),
-                new SolidBrush(Color.Black),
-                new Rectangle(e.Bounds.X + e.Bounds.Height, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height));
-        }*/
     }
 }

@@ -28,6 +28,7 @@ namespace Eu4ModEditor.PropertyPanel
             InitializeComponent();
 
             locationCurr = new Point(this.Bounds.Left + 6, this.Bounds.Top + 25);
+            this.AutoSize = true;
         }
 
         #endregion
@@ -36,6 +37,14 @@ namespace Eu4ModEditor.PropertyPanel
 
         protected override void OnPaint(PaintEventArgs pe)
         {
+            foreach (Control c in this.Controls)
+            {
+                if(c is TextBox || c is ComboBox)
+                {
+                    c.Location = new Point(posXTextBox, c.Location.Y);
+                }
+            }
+
             base.OnPaint(pe);
         }
 
@@ -43,8 +52,8 @@ namespace Eu4ModEditor.PropertyPanel
 
         #region AddComponent methods
 
-        //Add Label to a group
-        public Rectangle AddLabel(string name)
+        //Add Label to a group, return a label to store it outside the controls
+        public Label AddLabel(string name)
         {
             Label l = new Label();
 
@@ -57,14 +66,15 @@ namespace Eu4ModEditor.PropertyPanel
             l.AutoSize = true;
             l.Text = name + " :";
 
+            this.Invalidate();
             //return Boundary of the label 
-            return l.Bounds;
+            return l;
         }
 
         //This methods add a label & a textBox
-        public void AddField(string name)//name is the name of the label
+        public TextBox AddField(string name)//name is the name of the label
         {
-            Rectangle boundsLabel= AddLabel(name);
+            Rectangle boundsLabel= AddLabel(name).Bounds;
 
             TextBox box = new TextBox();
 
@@ -77,16 +87,52 @@ namespace Eu4ModEditor.PropertyPanel
             this.Controls.Add(box);
 
             locationCurr.Y = box.Bounds.Bottom + 10;
+
+            this.Invalidate();
+
+            return box;
         }
 
         //this methods add a label & 3 textbox for color RVB & show a colorDialog via a button
-        public void AddColorField(string name)
+        public ColorProperty AddColorField(string name)
         {
             ColorProperty colorProperty = new ColorProperty();
 
-            posXTextBox = colorProperty.Initialize("Color", locationCurr, posXTextBox);
+            posXTextBox = colorProperty.Initialize(name, ref locationCurr, posXTextBox);
 
+            Console.WriteLine(locationCurr);
             Controls.Add(colorProperty);
+
+            this.Invalidate();
+
+            return colorProperty;
+        }
+
+        //this methods add a comboBox
+        public ComboBox AddComboBox(string name)
+        {
+            ComboBox cb = new ComboBox();
+
+            cb.Location = locationCurr;
+            cb.Name = name + "ComboBox";
+
+            this.Controls.Add(cb);
+
+            locationCurr = new Point(locationCurr.X, cb.Bounds.Bottom + 10);
+
+            return cb;
+        }
+
+        //this methods add a listBox with button and ComboBox to add thing to listBox
+        public ListBoxPanel addListBoxPanel(string name)
+        {
+            ListBoxPanel lbp = new ListBoxPanel();
+
+            lbp.Initialize(name, ref locationCurr, posXTextBox);
+
+            this.Controls.Add(lbp);
+
+            return lbp;
         }
 
         #endregion

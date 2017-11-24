@@ -13,15 +13,25 @@ namespace Eu4ModEditor
 {
     public partial class CreateNewProject : Form
     {
+        #region Fields Region
+
         //Variable use to move the form
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
 
+        #endregion
+
+        #region Constructor Region
+
         public CreateNewProject()
         {
             InitializeComponent();
         }
+
+        #endregion
+
+        #region MoveForm Region
 
         //these 3 methodes are event to move the form
         private void CreateNewProject_MouseDown(object sender, MouseEventArgs e)
@@ -45,6 +55,10 @@ namespace Eu4ModEditor
             dragging = false;
         }
 
+        #endregion
+
+        #region ControlButton Region 
+
         //Control Button
         private void CloseButton_Click(object sender, EventArgs e)
         {
@@ -60,6 +74,10 @@ namespace Eu4ModEditor
         {
             CloseButton.ForeColor = Color.White;
         }
+
+        #endregion
+
+        #region ButtonsEvents Region
 
         private void ParcourirProjectButton_Click(object sender, EventArgs e)
         {
@@ -122,5 +140,7 @@ namespace Eu4ModEditor
         {
             this.Close();
         }
+
+        #endregion
     }
 }

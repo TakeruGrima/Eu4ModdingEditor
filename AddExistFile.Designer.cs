@@ -37,7 +37,10 @@
             this.FiltrePanel = new System.Windows.Forms.Panel();
             this.FileTypeTree = new System.Windows.Forms.TreeView();
             this.VidePanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.DescriptionPanel = new System.Windows.Forms.Panel();
+            this.TypeLabelText = new System.Windows.Forms.Label();
+            this.TypeLabel = new System.Windows.Forms.Label();
             this.DescriptionBox = new System.Windows.Forms.TextBox();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.Annuler = new System.Windows.Forms.Button();
@@ -46,9 +49,6 @@
             this.TopLabel = new System.Windows.Forms.Label();
             this.CloseButton = new Eu4ModEditor.ControlComponent.ButtonZ();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.TypeLabel = new System.Windows.Forms.Label();
-            this.TypeLabelText = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.MainPanel.SuspendLayout();
             this.MiddlePanel.SuspendLayout();
             this.FilesViewPanel.SuspendLayout();
@@ -137,6 +137,13 @@
             this.VidePanel.Size = new System.Drawing.Size(215, 14);
             this.VidePanel.TabIndex = 2;
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(215, 14);
+            this.panel1.TabIndex = 3;
+            // 
             // DescriptionPanel
             // 
             this.DescriptionPanel.Controls.Add(this.TypeLabelText);
@@ -147,6 +154,24 @@
             this.DescriptionPanel.Name = "DescriptionPanel";
             this.DescriptionPanel.Size = new System.Drawing.Size(250, 448);
             this.DescriptionPanel.TabIndex = 0;
+            // 
+            // TypeLabelText
+            // 
+            this.TypeLabelText.AutoSize = true;
+            this.TypeLabelText.Location = new System.Drawing.Point(63, 15);
+            this.TypeLabelText.Name = "TypeLabelText";
+            this.TypeLabelText.Size = new System.Drawing.Size(0, 13);
+            this.TypeLabelText.TabIndex = 2;
+            // 
+            // TypeLabel
+            // 
+            this.TypeLabel.AutoSize = true;
+            this.TypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TypeLabel.Location = new System.Drawing.Point(14, 14);
+            this.TypeLabel.Name = "TypeLabel";
+            this.TypeLabel.Size = new System.Drawing.Size(43, 13);
+            this.TypeLabel.TabIndex = 1;
+            this.TypeLabel.Text = "Type :";
             // 
             // DescriptionBox
             // 
@@ -253,31 +278,6 @@
             this.imageList1.Images.SetKeyName(1, "Event");
             this.imageList1.Images.SetKeyName(2, "Decision");
             this.imageList1.Images.SetKeyName(3, "Mission");
-            // 
-            // TypeLabel
-            // 
-            this.TypeLabel.AutoSize = true;
-            this.TypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TypeLabel.Location = new System.Drawing.Point(14, 14);
-            this.TypeLabel.Name = "TypeLabel";
-            this.TypeLabel.Size = new System.Drawing.Size(43, 13);
-            this.TypeLabel.TabIndex = 1;
-            this.TypeLabel.Text = "Type :";
-            // 
-            // TypeLabelText
-            // 
-            this.TypeLabelText.AutoSize = true;
-            this.TypeLabelText.Location = new System.Drawing.Point(63, 15);
-            this.TypeLabelText.Name = "TypeLabelText";
-            this.TypeLabelText.Size = new System.Drawing.Size(0, 13);
-            this.TypeLabelText.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(215, 14);
-            this.panel1.TabIndex = 3;
             // 
             // AddExistFile
             // 

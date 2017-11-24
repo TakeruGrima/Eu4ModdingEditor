@@ -15,6 +15,8 @@ namespace Eu4ModEditor
 {
     public partial class MainForm : Form
     {
+        #region Field region
+
         bool isWindowMaximized = false;
 
         Size _normalWindowSize = new Size(new Point(0, 0));
@@ -26,6 +28,10 @@ namespace Eu4ModEditor
         private Point dragFormPoint;
 
         GroupBox box;
+
+        #endregion
+
+        #region Constructor
 
         public MainForm()
         {
@@ -60,6 +66,10 @@ namespace Eu4ModEditor
             }
         }
 
+        #endregion
+
+        #region MainForm events
+
         //these 3 methodes are event to move the form
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
@@ -81,6 +91,17 @@ namespace Eu4ModEditor
         {
             dragging = false;
         }
+
+        //Actualise the treeView
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            SolutionView.Nodes.Clear();
+            SolutionView.PopulateTreeView();
+        }
+
+        #endregion
+
+        #region Buttons events
 
         //Controls Button
         private void CloseButton_Click(object sender, EventArgs e)
@@ -117,6 +138,10 @@ namespace Eu4ModEditor
             this.WindowState = FormWindowState.Minimized;
         }
 
+        #endregion
+
+        #region SolutionView events
+
         //SolutionViewEvent
         private void SolutionView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -149,11 +174,17 @@ namespace Eu4ModEditor
 
                             propertyBox1.AddField("Tag");
                             propertyBox1.AddColorField("Color");
+                            propertyBox1.AddComboBox("TestCombo");
+                            propertyBox1.addListBoxPanel("ListBox");
                         }
                     }
                 }
             }
         }
+
+        #endregion
+
+        #region ToolStripMenuItem events
 
         //Create a new project
         private void nouveauToolStripMenuItem_Click(object sender, EventArgs e)
@@ -206,13 +237,6 @@ namespace Eu4ModEditor
             }
         }
 
-        //Actualise the treeView
-        private void MainForm_Activated(object sender, EventArgs e)
-        {
-            SolutionView.Nodes.Clear();
-            SolutionView.PopulateTreeView();
-        }
-
         private void enregistrerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             foreach (TabPage page in TextTab.TabPages)
@@ -222,5 +246,7 @@ namespace Eu4ModEditor
                 c.Save();
             }
         }
+
+        #endregion
     }
 }

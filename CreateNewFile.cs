@@ -13,10 +13,16 @@ namespace Eu4ModEditor
 {
     public partial class CreateNewFile : Form
     {
+        #region Fields Region
+
         //Variable use to move the form
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
+
+        #endregion
+
+        #region Constructor Region
 
         public CreateNewFile()
         {
@@ -29,6 +35,10 @@ namespace Eu4ModEditor
             FilesList.Items.Add(new GListBoxItem("Decision", 2));
             FilesList.Items.Add(new GListBoxItem("Mission", 3));
         }
+
+        #endregion
+
+        #region MoveForm Region
 
         //these 3 methodes are event to move the form
         private void CreateNewFile_MouseDown(object sender, MouseEventArgs e)
@@ -52,6 +62,10 @@ namespace Eu4ModEditor
             dragging = false;
         }
 
+        #endregion
+
+        #region ControlButton Region 
+
         //Control Button
         private void CloseButton_Click(object sender, EventArgs e)
         {
@@ -67,5 +81,7 @@ namespace Eu4ModEditor
         {
             CloseButton.ForeColor = Color.White;
         }
+
+        #endregion
     }
 }

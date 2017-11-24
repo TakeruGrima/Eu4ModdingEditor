@@ -11,9 +11,15 @@ namespace Eu4ModEditor
 {
     class TextBoxCompletion : MyRichTextBox
     {
+        #region Fields Region
+
         //declare  isCurslyBracesKeyPressed variable as Boolean and assign false value  
         //to check { key is pressed or not  
         public static Boolean isCurslyBracesKeyPressed = false;
+
+        #endregion
+
+        #region Constructor Region
 
         public TextBoxCompletion()
         {
@@ -32,10 +38,13 @@ namespace Eu4ModEditor
             LineNumberTextBox.Font = richTextBox1.Font;
         }
 
+        #endregion
+
+        #region KeyEvents Region
+
         // if key (,{,<,",',[ is pressed then insert opposite key to GetRichTextBox() at Position SelectionStart+1  
         // add one line after inserting, e.Handled=true;  
         //finally set SelectionStart to specified position 
-
         private void richTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             String s = e.KeyChar.ToString();
@@ -96,5 +105,7 @@ namespace Eu4ModEditor
                 }
             }
         }
+
+        #endregion
     }
 }

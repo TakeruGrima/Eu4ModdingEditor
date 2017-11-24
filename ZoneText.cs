@@ -11,7 +11,24 @@ namespace Eu4ModEditor
 {
     class ZoneText
     {
+        #region Field Region
+
         private string text;
+
+        string Separator, EndSeparator;
+        public string Path;// Chemin du fichier
+
+        RichTextBox markBox;//cette textBox contient le texte mais les \t de la mise en page sont
+        //remplacé par des <
+
+        RichTextBox box;
+
+        int SelectionStart;//Position du texte
+
+        #endregion
+
+        #region Property Region
+
         public string Text
         {
             get
@@ -25,15 +42,10 @@ namespace Eu4ModEditor
                 box.Text += "\n" + EndSeparator + "\n\n";
             }
         }
-        string Separator, EndSeparator;
-        public string Path;// Chemin du fichier
 
-        RichTextBox markBox;//cette textBox contient le texte mais les \t de la mise en page sont
-        //remplacé par des <
+        #endregion
 
-        RichTextBox box;
-
-        int SelectionStart;//Position du texte
+        #region Constructor Region
 
         public ZoneText(string path, RichTextBox box, string separator)
         {
@@ -46,9 +58,13 @@ namespace Eu4ModEditor
             Path = path;
         }
 
+        #endregion
+
+        #region Read Methods
+
         public void ReadAllFile()
         {
-            Text = File.ReadAllText(Path,Encoding.Default);
+            Text = File.ReadAllText(Path);
 
             ActualizeMarkBox();
 
@@ -64,6 +80,10 @@ namespace Eu4ModEditor
             getSelectionStart();
         }
 
+        #endregion
+
+        #region Methods
+
         public void getSelectionStart()
         {
             SelectionStart = box.Text.IndexOf(Separator) + Separator.Length + 2;
@@ -73,6 +93,22 @@ namespace Eu4ModEditor
         {
             markBox.Text = box.Text.Replace("\n\t", "\n<");
         }
+
+        public string GetText()
+        {
+            getSelectionStart();
+            int end = box.Text.IndexOf(EndSeparator);
+
+            string tmp;
+
+            tmp = box.Text.Substring(SelectionStart, end - SelectionStart);
+            tmp = tmp.Replace("\n\t", "\n");
+            return tmp;
+        }
+
+        #endregion
+
+        #region KeyEvents
 
         public bool KeyDown(KeyEventArgs e)
         {
@@ -87,22 +123,24 @@ namespace Eu4ModEditor
                 {
                     if (e.KeyCode == Keys.Back)
                     {
-                        /*if (markBox.Text[box.SelectionStart - 1] == '<')
+                        if (markBox.Text[box.SelectionStart - 1] == '<')
                         {
+                            //e.Handled = true;
                             box.Text = box.Text.Remove(box.SelectionStart - 2, 2);
                             markBox.Text = markBox.Text.Remove(box.SelectionStart - 2, 2);
                             return false;
-                        }*/
-
+                        }
                     }
-                    if(e.KeyCode == Keys.Enter)
+                    else if(e.KeyCode == Keys.Enter)
                     {
                         box.Select(box.SelectionStart, 0);
 
                         Clipboard.SetText("\n\t");
 
                         box.Paste();
+                        //box.Text = box.Text.Insert(box.SelectionStart, "\n\t");
                         e.Handled = true;
+                        //box.SelectionStart = box.SelectionStart + 2;
                         return true;
                     }
                 }
@@ -131,16 +169,6 @@ namespace Eu4ModEditor
             return false;
         }
 
-        public string GetText()
-        {
-            getSelectionStart();
-            int end = box.Text.IndexOf(EndSeparator); 
-
-            string tmp;
-
-            tmp = box.Text.Substring(SelectionStart,end - SelectionStart);
-            tmp = tmp.Replace("\n\t", "\n");
-            return tmp;
-        }
+        #endregion
     }
 }

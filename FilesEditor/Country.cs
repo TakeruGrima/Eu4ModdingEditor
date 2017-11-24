@@ -33,21 +33,21 @@ namespace Eu4ModEditor.FilesEditor
 
             zonesText = new List<ZoneText>();
 
-            zonesText.Add(new ZoneText(file.CountryFile.CompletPath, richTextBox1, 
+            zonesText.Add(new ZoneText(file.CountryFile.CompletPath, richTextBox1,
                 "<Country>"));
             zonesText[0].ReadAllFile();
 
-            zonesText.Add(new ZoneText(file.CountryTag.Path, richTextBox1, 
+            zonesText.Add(new ZoneText(file.CountryTag.Path, richTextBox1,
                 "<Country Tag>"));
             zonesText[1].ReadString(file.CountryTag.Tag + " = \"" + file.CountryFile.Path + "\"");
 
-            zonesText.Add(new ZoneText(file.CountryLocalisation.Path, richTextBox1, 
+            zonesText.Add(new ZoneText(file.CountryLocalisation.Path, richTextBox1,
                 "<Country Localisation>"));
 
-            using (System.IO.StreamReader sr = 
+            using (System.IO.StreamReader sr =
                 new System.IO.StreamReader(file.CountryLocalisation.Path))
             {
-                while(!sr.EndOfStream)
+                while (!sr.EndOfStream)
                 {
                     string text = sr.ReadLine();
 
@@ -66,7 +66,7 @@ namespace Eu4ModEditor.FilesEditor
 
             zonesText[2].ReadString(localisations);
 
-           // Save();
+            // Save();
         }
 
         private void InitializeComponent()
@@ -79,7 +79,7 @@ namespace Eu4ModEditor.FilesEditor
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Size = new System.Drawing.Size(713, 394);
+            this.richTextBox1.Size = new System.Drawing.Size(738, 394);
             this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             this.richTextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBox1_KeyPress);
             // 
@@ -87,8 +87,9 @@ namespace Eu4ModEditor.FilesEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.Name = "Country";
-            this.Size = new System.Drawing.Size(743, 394);
+            this.Size = new System.Drawing.Size(768, 394);
             this.ResumeLayout(false);
+
         }
 
         private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
@@ -99,7 +100,7 @@ namespace Eu4ModEditor.FilesEditor
             {
                 foreach (ZoneText zone in zonesText)
                 {
-                    if (alreadyDone==false)
+                    if (alreadyDone == false)
                     {
                         alreadyDone = zone.KeyDown(e);
                     }
@@ -110,7 +111,7 @@ namespace Eu4ModEditor.FilesEditor
         private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             bool alreadyDone = false;
-          
+
             if (e.KeyChar == '\b')
             {
                 e.Handled = true;
@@ -123,7 +124,7 @@ namespace Eu4ModEditor.FilesEditor
                     alreadyDone = zone.KeyPress(e);
                 }
             }
-            if(alreadyDone==false)
+            if (alreadyDone == false)
             {
                 e.Handled = true;
             }
@@ -137,15 +138,15 @@ namespace Eu4ModEditor.FilesEditor
             using (System.IO.StreamWriter wr =
                new System.IO.StreamWriter(zonesText[0].Path))
             {
-                wr.Write(zonesText[0].GetText().Replace("\n",Environment.NewLine));
+                wr.Write(zonesText[0].GetText().Replace("\n", Environment.NewLine));
             }
 
             string Filetext = File.ReadAllText(zonesText[2].Path);
 
-            Filetext = Filetext.Replace(localisations, 
-                zonesText[2].GetText().Remove(zonesText[2].GetText().Length-1));
+            Filetext = Filetext.Replace(localisations,
+                zonesText[2].GetText().Remove(zonesText[2].GetText().Length - 1));
 
-            File.WriteAllText(zonesText[2].Path,Filetext);
+            File.WriteAllText(zonesText[2].Path, Filetext);
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Eu4ModEditor
 {
     public partial class AddExistFile : Form
     {
+        #region Fields Region
+
         //Variable use to move the form
         private bool dragging = false;
         private Point dragCursorPoint;
@@ -25,6 +27,10 @@ namespace Eu4ModEditor
         GListBox ListFilesAllType;
         GListBox ListFilesContent;
         GListBox ListFilesTrigger;
+
+        #endregion
+
+        #region Constructor Region
 
         public AddExistFile()
         {
@@ -88,6 +94,10 @@ namespace Eu4ModEditor
             }
         }
 
+        #endregion
+
+        #region MoveForm Region
+
         //these 3 methodes are event to move the form
         private void CreateNewFile_MouseDown(object sender, MouseEventArgs e)
         {
@@ -110,6 +120,10 @@ namespace Eu4ModEditor
             dragging = false;
         }
 
+        #endregion
+
+        #region ControlButton Region 
+
         //Control Button
         private void CloseButton_Click(object sender, EventArgs e)
         {
@@ -125,6 +139,10 @@ namespace Eu4ModEditor
         {
             CloseButton.ForeColor = Color.White;
         }
+
+        #endregion
+
+        #region ButtonEvents Region
 
         //Add file
         private void Ajouter_Click(object sender, EventArgs e)
@@ -154,6 +172,10 @@ namespace Eu4ModEditor
         {
             this.Close();
         }
+
+        #endregion
+
+        #region ListFiles Region
 
         private void FilesList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -207,5 +229,7 @@ namespace Eu4ModEditor
                 }
             }
         }
+
+        #endregion
     }
 }
